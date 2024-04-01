@@ -1,21 +1,29 @@
 import java.util.Scanner;
 
-public class DivisibleBySevenAndThirteen {
+public class VowelChecker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
-        int number = scanner.nextInt();
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine().toLowerCase(); 
 
-        if ((number % 7 == 0) && (number % 13 == 0)) {
+        int vowelCount = 0;
+        boolean vowelPresent = false;
 
-            System.out.println(number + " is divisible by both 7 and 13.");
-            System.out.println("Quotient when divided by 7: " + (number / 7));
-            System.out.println("Remainder when divided by 7: " + (number % 7));
-            System.out.println("Quotient when divided by 13: " + (number / 13));
-            System.out.println("Remainder when divided by 13: " + (number % 13));
+        for (int i = 0; i < inputString.length(); i++) {
+            char ch = inputString.charAt(i);
+
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                vowelCount++;
+                vowelPresent = true;
+            }
+        }
+
+        if (vowelPresent) {
+            System.out.println("Vowels are present in the string.");
+            System.out.println("Total number of vowels: " + vowelCount);
         } else {
-            System.out.println(number + " is not divisible by both 7 and 13 simultaneously.");
+            System.out.println("No vowels are present in the string.");
         }
 
         scanner.close();
